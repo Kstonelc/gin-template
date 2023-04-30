@@ -20,8 +20,11 @@ import (
 
 // Go Web开发较通用的脚手架模板
 func main() {
+	if len(os.Args) < 2 {
+		return
+	}
 	//1 加载配置文件
-	if err := settings.Init(); err != nil {
+	if err := settings.Init(os.Args[1]); err != nil {
 		fmt.Printf("init settings failed, err:%v\n", err)
 		return
 	}
